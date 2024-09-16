@@ -1,4 +1,3 @@
 packages:
-    - 'day02/**'
-    - 'day03/**'
-    - 'day12/**'
+    - 'day*/**'
+    - 'sentry-*/**'
