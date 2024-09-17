@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const mockArr = Array.from({ length: 10000 }, (_, i) => `Item ${i + 1}`);
+const mockMaxNumber = 100000;
+function performHeavyCalculation() {
+    let total = 0;
+    for (let i = 0; i < mockMaxNumber; i++) {
+        total += i;
+        console.log(total);
+    }
+}
 
 export default function LongLoading() {
+    const [isReady, setIsReady] = useState(false);
+
+    useEffect(() => {
+        performHeavyCalculation();
+        setIsReady(true);
+    }, []);
+
+    if (!isReady) {
+        return <h1>Loading...</h1>;
+    }
+
     return (
         <div>
             <h1>LongLoading</h1>
-            <ul>
-                {mockArr.map((item) => (
-                    <li key={item}>{item}</li>
-                ))}
-            </ul>
+            <ul>Completed Calculation</ul>
         </div>
     );
 }

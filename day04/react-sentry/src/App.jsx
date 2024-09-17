@@ -1,7 +1,9 @@
 import * as Sentry from '@sentry/react';
+import React from 'react';
 import { SENTRY_ENDPOINT } from './config';
 import ErrorComponent from './components/ErrorComponent';
 import InOrderError from './components/InOrderError';
+import LongLoading from './components/LongLoading';
 import './App.css';
 
 Sentry.init({
@@ -24,7 +26,8 @@ function App() {
         <div>
             <h1>Hello Sentry</h1>
             {/* <ErrorComponent /> */}
-            <InOrderError />
+            {/* <InOrderError /> */}
+            <LongLoading />
         </div>
     );
 }
