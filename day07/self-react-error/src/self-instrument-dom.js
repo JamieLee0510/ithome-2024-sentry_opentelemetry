@@ -51,5 +51,20 @@ export class SelfDomInstrument {
 
     initEventMonintoring() {
         document.addEventListener('click', this.captureEvent.bind(this), true);
+        window.onerror = this._errorHandler.bind(this);
+    }
+
+    _errorHandler(message, source, lineno, colno, error) {
+        // console.log(
+        //     `Message:${message},\nSource:${source},\nLineon:${lineno},\nColno:${colno},\nError:${error}`,
+        // );
+        console.log('---user actions with error:', [
+            ...this.userActions,
+            {
+                type: 'Error',
+                time: new Date().toISOString(),
+                message,
+            },
+        ]);
     }
 }
