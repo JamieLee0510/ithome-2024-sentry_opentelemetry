@@ -421,6 +421,55 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
+  day09/react-self-router:
+    dependencies:
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+      react-error-boundary:
+        specifier: ^4.0.13
+        version: 4.0.13(react@18.3.1)
+      react-router-dom:
+        specifier: ^6.26.2
+        version: 6.26.2(react-dom@18.3.1)(react@18.3.1)
+      web-vitals:
+        specifier: ^4.2.3
+        version: 4.2.3
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.9.0
+        version: 9.10.0
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.5
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
+      '@vitejs/plugin-react':
+        specifier: ^4.3.1
+        version: 4.3.1(vite@5.4.5)
+      eslint:
+        specifier: ^9.9.0
+        version: 9.10.0
+      eslint-plugin-react:
+        specifier: ^7.35.0
+        version: 7.36.1(eslint@9.10.0)
+      eslint-plugin-react-hooks:
+        specifier: ^5.1.0-rc.0
+        version: 5.1.0-rc-fb9a90fa48-20240614(eslint@9.10.0)
+      eslint-plugin-react-refresh:
+        specifier: ^0.4.9
+        version: 0.4.12(eslint@9.10.0)
+      globals:
+        specifier: ^15.9.0
+        version: 15.9.0
+      vite:
+        specifier: ^5.4.1
+        version: 5.4.5
+
   sentry-demo/user-event:
     dependencies:
       react:
@@ -3367,6 +3416,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
+
+  /web-vitals@4.2.3:
+    resolution: {integrity: sha512-/CFAm1mNxSmOj6i0Co+iGFJ58OS4NRGVP+AWS/l509uIK5a1bSoIVaHz/ZumpHTfHSZBpgrJ+wjfpAOrTHok5Q==}
+    dev: false
 
   /which-boxed-primitive@1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}
