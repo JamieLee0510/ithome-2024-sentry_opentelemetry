@@ -7,18 +7,10 @@ const selfDomInstrument = new SelfDomInstrument();
 selfDomInstrument.initEventMonintoring();
 
 function App() {
-    const demoRef = useRef();
-    const demo = () => {
-        const userActions = selfDomInstrument.userActions;
-        console.log(userActions);
-    };
     return (
         <div id="app-root">
-            <InOrderError />
-            <div id="demo-wrap" onClick={() => demo()}>
-                <div ref={demoRef} id="demo-dom">
-                    Hello World
-                </div>
+            <div className="inorder-area">
+                <InOrderError />
             </div>
         </div>
     );
