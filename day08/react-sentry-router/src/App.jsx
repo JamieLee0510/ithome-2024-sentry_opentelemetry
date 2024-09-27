@@ -18,6 +18,7 @@ import Page02 from './features/Page02';
 import Page03 from './features/Page03';
 
 import './App.css';
+import Home from './features/Home';
 
 Sentry.init({
     dsn: SENTRY_ENDPOINT,
@@ -48,7 +49,7 @@ function App() {
         <BrowserRouter>
             <SentryRoutes>
                 <Route path="/" element={<Layout />}>
-                    <Route index element={<div>Home</div>} />
+                    <Route index element={<Home />} />
                     <Route path="page01" element={<Page01 />} />
                     <Route path="page02" element={<Page02 />} />
                     <Route path="page03" element={<Page03 />} />

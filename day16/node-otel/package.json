@@ -1,0 +1,21 @@
+{
+    "name": "node-otel",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "node index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@opentelemetry/auto-instrumentations-node": "^0.50.0",
+        "@opentelemetry/exporter-trace-otlp-http": "^0.53.0",
+        "@opentelemetry/resources": "^1.26.0",
+        "@opentelemetry/sdk-node": "^0.53.0",
+        "@opentelemetry/semantic-conventions": "^1.27.0",
+        "cors": "^2.8.5",
+        "express": "^4.21.0"
+    }
+}

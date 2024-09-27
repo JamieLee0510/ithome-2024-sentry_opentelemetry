@@ -1,0 +1,8 @@
+global:
+    scrape_interval: 5s # 全局抓取间隔
+
+scrape_configs:
+    - job_name: 'nodejs-app' # 抓取目标的名称
+      static_configs:
+          # 指定 Node.js 应用暴露的指标端点，或者opentelemetry-collector暴露的metric端點
+          - targets: ['host.docker.internal:9464']
