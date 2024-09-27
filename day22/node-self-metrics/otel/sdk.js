@@ -1,9 +1,9 @@
 const { MockHttpInstrumentation } = require('./instrument-http');
 const { MockMeter } = require('./meter');
-const { MockPrometheusExporter } = require('./prometheusExporter');
+const { MockPrometheusExporter } = require('./prometheus-exporter');
 
 class SelfSdk {
-    constructor({ metricExporter, instruments }) {
+    constructor() {
         this.meter = new MockMeter();
         this.metricExporter = new MockHttpInstrumentation(this.meter);
         this.instruments = [new MockPrometheusExporter(this.meter)];
@@ -16,3 +16,7 @@ class SelfSdk {
         this.metricExporter.init();
     }
 }
+
+const selfSdk = new SelfSdk();
+
+module.exports = { selfSdk };

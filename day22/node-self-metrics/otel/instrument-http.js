@@ -20,7 +20,7 @@ class MockHttpInstrumentation {
         );
     }
 
-    // 記錄server request 的持續時間
+    // 記錄server response 的持續時間
     recordServerRequestDuration(req, res) {
         const startTime = hrTime();
         res.on('finish', () => {
@@ -37,17 +37,17 @@ class MockHttpInstrumentation {
     }
 
     // 記錄client request 的持續時間
-    recordClientRequestDuration(request, response) {
+    recordClientRequestDuration(req, res) {
         const startTime = hrTime();
-        response.on('end', () => {
+        res.on('end', () => {
             const endTime = hrTime();
             const duration = hrTimeToMilliseconds(
                 hrTimeDuration(startTime, endTime),
             );
             this._httpClientDurationHistogram.record(duration, {
-                method: request.method || 'GET',
-                host: request.getHeader('host'),
-                status_code: response.statusCode,
+                method: req.method || 'GET',
+                host: req.getHeader('host'),
+                status_code: req.statusCode,
             });
         });
     }
