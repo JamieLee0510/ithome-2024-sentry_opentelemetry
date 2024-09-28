@@ -702,6 +702,15 @@ importers:
         specifier: ^4.21.0
         version: 4.21.0
 
+  day24/node-self-logs:
+    dependencies:
+      bunyan:
+        specifier: ^1.8.15
+        version: 1.8.15
+      require-in-the-middle:
+        specifier: ^7.4.0
+        version: 7.4.0
+
   sentry-demo/user-event:
     dependencies:
       react:
