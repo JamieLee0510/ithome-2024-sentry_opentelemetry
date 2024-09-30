@@ -834,7 +834,47 @@ importers:
         specifier: ^5.4.1
         version: 5.4.5
 
-  day27/nextjs-otel:
+  day27/react-self-otel:
+    dependencies:
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.9.0
+        version: 9.10.0
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.5
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
+      '@vitejs/plugin-react':
+        specifier: ^4.3.1
+        version: 4.3.1(vite@5.4.5)
+      eslint:
+        specifier: ^9.9.0
+        version: 9.10.0
+      eslint-plugin-react:
+        specifier: ^7.35.0
+        version: 7.36.1(eslint@9.10.0)
+      eslint-plugin-react-hooks:
+        specifier: ^5.1.0-rc.0
+        version: 5.1.0-rc-fb9a90fa48-20240614(eslint@9.10.0)
+      eslint-plugin-react-refresh:
+        specifier: ^0.4.9
+        version: 0.4.12(eslint@9.10.0)
+      globals:
+        specifier: ^15.9.0
+        version: 15.9.0
+      vite:
+        specifier: ^5.4.1
+        version: 5.4.5
+
+  day28/nextjs-otel:
     dependencies:
       next:
         specifier: 14.2.13
