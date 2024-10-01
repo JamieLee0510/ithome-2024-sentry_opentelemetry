@@ -1,0 +1,40 @@
+version: '3'
+services:
+    self-otel-collector:
+        container_name: self-otel-collector
+        image: otel/opentelemetry-collector-contrib:latest
+        command: ['--config=/etc/otel-collector-config.yaml']
+        volumes:
+            - ./config/otel-collector-config.yaml:/etc/otel-collector-config.yaml
+        ports:
+            - '4317:4317' # OTLP gRPC 接口
+            - '4318:4318' # OTLP HTTP 接口
+        depends_on:
+            - self-loki
+        networks:
+            - otel-network
+    self-loki:
+        container_name: self-loki
+        image: grafana/loki:latest
+        command: -config.file=/etc/loki/local-config.yaml
+        volumes:
+            - ./config/loki-local-config.yaml:/etc/loki/local-config.yaml
+        ports:
+            - '3100:3100' # Loki HTTP API 接口
+        networks:
+            - otel-network
+    # Grafana 可视化服务
+    grafana:
+        image: grafana/grafana:latest
+        environment:
+            - GF_SECURITY_ADMIN_PASSWORD=admin
+        ports:
+            - '3080:3000' # Grafana Web UI
+        depends_on:
+            - self-loki
+        networks:
+            - otel-network
+
+networks:
+    otel-network:
+        driver: bridge
