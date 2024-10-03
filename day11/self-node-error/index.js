@@ -16,6 +16,13 @@ app.get('/demo-error', (req, res) => {
     throw new Error('---Mock Error');
 });
 
+app.get('/demo-error-log', (req, res) => {
+    const a = 'a';
+    a = 'b';
+
+    res.send('hello self error catcher');
+});
+
 SelfSentry.setupExpressErrorHandler(app);
 
 app.listen(PORT, () => {
