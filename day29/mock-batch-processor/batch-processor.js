@@ -29,27 +29,27 @@ class BatchProcessor {
                 reject(new Error('Timeout'));
             }, this._exportTimeoutMillis);
 
-            let tasks;
+            let taskItems;
 
             if (this._buffer.length <= this._maxExportBatchSize) {
-                tasks = this._buffer;
+                taskItems = this._buffer;
                 this._buffer = [];
             } else {
-                tasks = this._buffer.splice(0, this._maxExportBatchSize);
+                taskItems = this._buffer.splice(0, this._maxExportBatchSize);
             }
 
-            this._exporter(tasks, () => {
+            this._exporter(taskItems, () => {
                 clearTimeout(timer);
                 resolve();
             });
         });
     }
 
-    _addToBuffer(task) {
+    addToBuffer(taskItem) {
         // over queue size, drop task
         if (this._buffer.length == this._maxQueueSize) return;
 
-        this._buffer.push(task);
+        this._buffer.push(taskItem);
 
         this._maybeStartTimer();
     }
@@ -61,7 +61,8 @@ class BatchProcessor {
             this._isExporting = true;
             this._flushOneBatch().finally(() => {
                 this._isExporting = false;
-                // 假如buffer裡面還有任務，再重新flush
+
+                // 假如buffer裡面還有任務，再重新flush，以防止任務沒有被執行
                 if (this._buffer.length > 0) {
                     this._clearTimer();
                     this._maybeStartTimer();
@@ -69,12 +70,13 @@ class BatchProcessor {
             });
         };
 
-        // 如果 buffer 內大於單次批次大小，立即flush
+        // 如果 buffer 內大於單次批次大小，立即flush---加速
         if (this._buffer.length >= this._maxExportBatchSize) {
             return flush();
         }
         if (this._timer !== undefined) return;
-        // 否則設置定時器來異步導出
+
+        // 允許延遲，讓更多任務進入 buffer；
         this._timer = setTimeout(() => flush(), this._scheduledDelayMillis);
     }
 }
